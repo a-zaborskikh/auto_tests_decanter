@@ -1,5 +1,7 @@
 import datetime
 
+import allure
+
 
 class Base:
     def __init__(self, driver):
@@ -24,11 +26,12 @@ class Base:
     """Method screenshot"""
 
     def get_screenshot(self):
-        # создать скриншот с датой в директории screen, не перезаписываемый
-        now_date = datetime.datetime.now().strftime('%Y.%m.%d-%H.%M')
-        name_screenshot = 'screenshot_' + now_date + '.png'
-        print(name_screenshot)
-        self.driver.save_screenshot('C:\\pythonProject\\pythonProject1\\pythonProject\\wb_project\\screen\\' + name_screenshot)
+        with allure.step('get_screenshot'):
+            # создать скриншот с датой в директории screen, не перезаписываемый
+            now_date = datetime.datetime.now().strftime('%Y.%m.%d-%H.%M')
+            name_screenshot = 'screenshot_' + now_date + '.png'
+            print(name_screenshot)
+            self.driver.save_screenshot('C:\\pythonProject\\pythonProject1\\pythonProject\\wb_project\\screen\\' + name_screenshot)
 
     """Method assert url"""
 

@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -31,8 +32,9 @@ class WelcomePage(Base):
 
     # Methods
     def enter_to_service(self):
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.get_current_url()
-        self.get_popup_18_yes().click()
-        self.assert_word(self.get_value_assert_word_welcome(), self.value_assert_word_welcome)
+        with allure.step('enter_to_service'):
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.get_current_url()
+            self.get_popup_18_yes().click()
+            self.assert_word(self.get_value_assert_word_welcome(), self.value_assert_word_welcome)

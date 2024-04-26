@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -50,9 +51,10 @@ class MainPage(Base):
 
     # Methods
     def open_page_whisky_via_menu(self):
-        self.click_nav_menu_whisky()
-        self.assert_word(self.get_assert_word_nav_menu_whisky(), self.value_assert_word_nav_menu_whisky)
-        self.click_nav_menu_whisky_all()
-        self.get_current_url()
-        self.assert_word(self.get_assert_word_nav_menu_whisky_select_all(),
-                         self.value_assert_word_nav_menu_whisky_select_all)
+        with allure.step('open_page_whisky_via_menu'):
+            self.click_nav_menu_whisky()
+            self.assert_word(self.get_assert_word_nav_menu_whisky(), self.value_assert_word_nav_menu_whisky)
+            self.click_nav_menu_whisky_all()
+            self.get_current_url()
+            self.assert_word(self.get_assert_word_nav_menu_whisky_select_all(),
+                             self.value_assert_word_nav_menu_whisky_select_all)

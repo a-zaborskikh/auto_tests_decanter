@@ -1,6 +1,7 @@
 import random
 import re
 
+import allure
 from selenium.common import TimeoutException
 
 from base.base_class import Base
@@ -167,27 +168,29 @@ class CartPage(Base):
 
     # Methods
     def select_products_in_cart(self):
-        self.assert_url(self.url_cart_page)
-        self.assert_quantity_products(self.get_quantity_product_1(), self.get_quantity_product_2(),
-                                      self.get_total_quantity_products())
-        self.click_plus_quant_to_first_product()
-        self.assert_quantity_products(self.get_quantity_product_1(), self.get_quantity_product_2(),
-                                      self.get_total_quantity_products())
-        self.assert_sum_price_products(self.get_price_product_1(), self.get_price_product_2(),
-                                       self.get_total_price_products())
-        self.click_delete_products()
-
-        try:
+        with allure.step('select_products_in_cart'):
+            self.assert_url(self.url_cart_page)
             self.assert_quantity_products(self.get_quantity_product_1(), self.get_quantity_product_2(),
                                           self.get_total_quantity_products())
-        except TimeoutException as exception:
-            print(str(exception) + 'Test "click_delete_products" is success! ')
-        self.assert_total_price_products(self.get_price_product_1(), self.get_total_price_products())
+            self.click_plus_quant_to_first_product()
+            self.assert_quantity_products(self.get_quantity_product_1(), self.get_quantity_product_2(),
+                                          self.get_total_quantity_products())
+            self.assert_sum_price_products(self.get_price_product_1(), self.get_price_product_2(),
+                                           self.get_total_price_products())
+            self.click_delete_products()
+
+            try:
+                self.assert_quantity_products(self.get_quantity_product_1(), self.get_quantity_product_2(),
+                                              self.get_total_quantity_products())
+            except TimeoutException as exception:
+                print(str(exception) + 'Test "click_delete_products" is success! ')
+            self.assert_total_price_products(self.get_price_product_1(), self.get_total_price_products())
 
     def users_info(self):
-        self.fill_input_user_name()
-        self.fill_input_user_phone()
-        self.click_radiobutton_store()
-        self.click_selectors_menu_store()
-        self.click_selectors_menu_store_3()
-        # self.get_screenshot()
+        with allure.step('users_info'):
+            self.fill_input_user_name()
+            self.fill_input_user_phone()
+            self.click_radiobutton_store()
+            self.click_selectors_menu_store()
+            self.click_selectors_menu_store_3()
+            # self.get_screenshot()

@@ -1,0 +1,24 @@
+Start test
+Current_url: https://decanter.ru/
+Value_word: "sales@decanter.ru"
+
+Success test! Value word "sales@decanter.ru" == result "sales@decanter.ru"
+Click nav_menu_whisky
+Value_word: "бренды"
+
+Success test! Value word "бренды" == result "бренды"
+Click nav_menu_whisky_all
+Current_url: https://decanter.ru/whisky
+Value_word: "виски"
+
+Success test! Value word "виски" == result "виски"
+Scroll page to 900px
+Click button_filter_informer
+Click button_filters
+Click sort_products
+Click sort_first_expensive
+Value_word: "виски macallan sir peter blake anecdotes of ages 0,7 л"
+
+Success test! Value word "виски macallan sir peter blake anecdotes of ages 0,7 л" == result "виски macallan sir peter blake anecdotes of ages 0,7 л"
+Click checkbox_filter_package
+Finish test

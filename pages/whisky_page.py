@@ -1,3 +1,4 @@
+import allure
 from selenium.common import ElementClickInterceptedException
 from selenium.webdriver import ActionChains
 
@@ -223,9 +224,10 @@ class WhiskyPage(Base):
 
     # Methods
     def open_filters_brand(self):
-        self.scroll_page(900)
-        self.click_button_filter_informer()
-        self.click_button_filters()
+        with allure.step('open_filters_brand'):
+            self.scroll_page(900)
+            self.click_button_filter_informer()
+            self.click_button_filters()
 
     def select_one_brand_to_filter(self):
         self.click_filter_brand_select_more()
@@ -294,25 +296,27 @@ class WhiskyPage(Base):
         self.select_checkbox_brand_search_6405()
 
     def select_different_filters(self):
-
-        self.click_sort_products()
-        self.click_sort_first_expensive()
-        self.assert_word(self.get_assert_sort_first_expensive(), self.value_assert_sort_first_expensive)
-        # self.scroll_page(-100)
-        # self.click_and_hold_filter_price()
-        # self.scroll_page(200)
-        try:
-            self.click_checkbox_filter_package()
-        except ElementClickInterceptedException as exception:
-            print(str(exception) + 'Know BUG-0002')
+        with allure.step('select_different_filters'):
+            self.click_sort_products()
+            self.click_sort_first_expensive()
+            self.assert_word(self.get_assert_sort_first_expensive(), self.value_assert_sort_first_expensive)
+            # self.scroll_page(-100)
+            # self.click_and_hold_filter_price()
+            # self.scroll_page(200)
+            try:
+                self.click_checkbox_filter_package()
+            except ElementClickInterceptedException as exception:
+                print(str(exception) + 'Know BUG-0002')
 
     def add_to_cart_products(self):
-        self.scroll_page(2000)
-        self.click_button_add_to_cart_product_1()
-        self.click_button_add_to_cart_product_2()
-        self.scroll_page(-2000)
-        self.assert_word(self.get_counter_products_to_cart(), self.value_counter_products_to_cart_2_products.lower())
+        with allure.step('add_to_cart_products'):
+            self.scroll_page(2000)
+            self.click_button_add_to_cart_product_1()
+            self.click_button_add_to_cart_product_2()
+            self.scroll_page(-2000)
+            self.assert_word(self.get_counter_products_to_cart(), self.value_counter_products_to_cart_2_products.lower())
 
     def open_cart_page(self):
-        self.click_button_open_cart_page()
-        self.assert_word(self.get_title_page_cart(), self.value_assert_title_page_cart.lower())
+        with allure.step('open_cart_page'):
+            self.click_button_open_cart_page()
+            self.assert_word(self.get_title_page_cart(), self.value_assert_title_page_cart.lower())

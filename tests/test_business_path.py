@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 
 from base.base_class import Base
@@ -8,6 +9,7 @@ from pages.whisky_page import WhiskyPage
 
 
 # @pytest.mark.run(order=1)
+@allure.description('Test filters')
 def test_filters(set_up):
     driver = webdriver.Firefox()
 
@@ -19,12 +21,14 @@ def test_filters(set_up):
 
     whisky_page = WhiskyPage(driver)
     whisky_page.open_filters_brand()
+
     whisky_page.select_different_filters()
 
     driver.quit()
 
 
 # @pytest.mark.run(order=1)
+@allure.description('Test business path')
 def test_business_path(set_up):
     driver = webdriver.Firefox()
 
@@ -36,15 +40,21 @@ def test_business_path(set_up):
 
     whisky_page = WhiskyPage(driver)
     whisky_page.add_to_cart_products()
+
     whisky_page.open_cart_page()
 
     cart_page = CartPage(driver)
     cart_page.select_products_in_cart()
+
     cart_page.users_info()
+
     base = Base(driver)
     base.get_screenshot()
 
     driver.quit()
 
 # python -m pytest -sv tests\test_business_path.py
-#
+# py -m pip install allure-pytest
+# python -m pytest -sv tests\test_buy_product.py
+# python -m pytest --alluredir=test_results/tests/test_business_path.py
+# allure serve test_results/tests/test_business_path.py

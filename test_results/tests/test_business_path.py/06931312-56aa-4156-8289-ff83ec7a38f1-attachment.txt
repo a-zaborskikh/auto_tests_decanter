@@ -1,0 +1,62 @@
+Start test
+Current_url: https://decanter.ru/
+Value_word: "sales@decanter.ru"
+
+Success test! Value word "sales@decanter.ru" == result "sales@decanter.ru"
+Click nav_menu_whisky
+Value_word: "бренды"
+
+Success test! Value word "бренды" == result "бренды"
+Click nav_menu_whisky_all
+Current_url: https://decanter.ru/whisky
+Value_word: "виски"
+
+Success test! Value word "виски" == result "виски"
+Scroll page to 2000px
+Click add_to_cart_product_1
+Click add_to_cart_product_2
+Scroll page to -2000px
+Value_word: "2 товара"
+
+Success test! Value word "2 товара" == result "2 товара"
+Click button_open_cart_page
+Value_word: "корзина и оформление заказа"
+
+Success test! Value word "корзина и оформление заказа" == result "корзина и оформление заказа"
+Success test! Current url "https://decanter.ru/cart" == result "https://decanter.ru/cart"
+value_quantity_product_1: 1
+value_quantity_product_2: 1
+value_total_quantity_products: 2
+value_total_quantity_products_int: 2
+Success test! value_total_quantity_products:2 == value_total_quantity_products_int:2
+Click plus_quant_to_first_product
+value_quantity_product_1: 2
+value_quantity_product_2: 1
+value_total_quantity_products: 3
+value_total_quantity_products_int: 3
+Success test! value_total_quantity_products:3 == value_total_quantity_products_int:3
+value_price_product_1:13098
+value_price_product_2:7975
+value_total_sum_price:21073
+value_sum_price_products:21073
+Success test! value_sum_price_products:21073 == value_total_sum_price:21073
+Click delete_second_products
+Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:192:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:510:5
+dom.find/</<@chrome://remote/content/shared/DOM.sys.mjs:136:16
+Test "click_delete_products" is success! 
+value_price_product_1:13098
+value_total_sum_price:13098
+Success test! value_sum_price_products:13098 == value_total_sum_price:13098
+Fill input_user_name
+[9, 7, 7, 1, 4, 8, 9]
+9771489
+Fill input_user_phone: 9009771489
+Click radiobutton_store
+Click selectors_menu_store
+Click selectors_menu_store_3
+screenshot_2024.04.26-15.58.png
+Finish test
